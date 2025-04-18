@@ -75,29 +75,7 @@ export default function Navbar() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="font-medium text-gray-800 hover:text-emerald-500">
-                  PAGES
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-3 p-4">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/pages/agents" className="block p-2 hover:bg-gray-100 rounded">
-                          Agents
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/pages/blog" className="block p-2 hover:bg-gray-100 rounded">
-                          Blog
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+             
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
                   <NavigationMenuLink className="font-medium text-gray-800 hover:text-emerald-500">
@@ -161,13 +139,6 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               PROPERTY
-            </Link>
-            <Link
-              href="/pages"
-              className="block py-2 px-3 rounded-md hover:bg-gray-100 font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              PAGES
             </Link>
             <Link
               href="/contact"
