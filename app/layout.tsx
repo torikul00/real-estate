@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Makaan - Find Your Perfect Home",
   description: "Find the perfect property for you and your family",
-    generator: 'v0.dev'
+    generator: 'timu'
 }
 
 export default function RootLayout({
