@@ -1,0 +1,205 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
+import { Menu, X } from "lucide-react"
+
+export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const router = useRouter()
+
+  return (
+    <header className="bg-white shadow-sm">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-2">
+          <div className="relative w-10 h-10">
+            <Image
+              src="/placeholder.svg?height=40&width=40"
+              alt="Makaan Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+          </div>
+          <span className="text-3xl font-bold text-emerald-500">Makaan</span>
+        </Link>
+
+        <div className="hidden md:flex items-center space-x-8">
+          <NavigationMenu>
+            <NavigationMenuList className="space-x-8">
+              <NavigationMenuItem>
+                <Link href="/" legacyBehavior passHref>
+                  <NavigationMenuLink className="font-medium text-gray-800 hover:text-emerald-500">
+                    HOME
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/about" legacyBehavior passHref>
+                  <NavigationMenuLink className="font-medium text-gray-800 hover:text-emerald-500">
+                    ABOUT
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="font-medium text-gray-800 hover:text-emerald-500">
+                  PROPERTY
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-3 p-4">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/property/for-sale" className="block p-2 hover:bg-gray-100 rounded">
+                          For Sale
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/property/for-rent" className="block p-2 hover:bg-gray-100 rounded">
+                          For Rent
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="font-medium text-gray-800 hover:text-emerald-500">
+                  PAGES
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-3 p-4">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/pages/agents" className="block p-2 hover:bg-gray-100 rounded">
+                          Agents
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/pages/blog" className="block p-2 hover:bg-gray-100 rounded">
+                          Blog
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/contact" legacyBehavior passHref>
+                  <NavigationMenuLink className="font-medium text-gray-800 hover:text-emerald-500">
+                    CONTACT
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="outline"
+              className="border-emerald-500 text-emerald-500 hover:bg-emerald-50"
+              onClick={() => router.push("/login")}
+            >
+              Login
+            </Button>
+            <Button
+              className="bg-emerald-500 hover:bg-emerald-600 text-white"
+              onClick={() => router.push("/property/add")}
+            >
+              Add Property
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center">
+          <button
+            type="button"
+            className="text-gray-500 hover:text-gray-700"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200 py-2">
+          <div className="container mx-auto px-4 space-y-1">
+            <Link
+              href="/"
+              className="block py-2 px-3 rounded-md hover:bg-gray-100 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              HOME
+            </Link>
+            <Link
+              href="/about"
+              className="block py-2 px-3 rounded-md hover:bg-gray-100 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              ABOUT
+            </Link>
+            <Link
+              href="/property"
+              className="block py-2 px-3 rounded-md hover:bg-gray-100 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              PROPERTY
+            </Link>
+            <Link
+              href="/pages"
+              className="block py-2 px-3 rounded-md hover:bg-gray-100 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              PAGES
+            </Link>
+            <Link
+              href="/contact"
+              className="block py-2 px-3 rounded-md hover:bg-gray-100 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              CONTACT
+            </Link>
+            <div className="pt-4 flex flex-col space-y-2">
+              <Button
+                variant="outline"
+                className="border-emerald-500 text-emerald-500 hover:bg-emerald-50 w-full"
+                onClick={() => {
+                  router.push("/login")
+                  setMobileMenuOpen(false)
+                }}
+              >
+                Login
+              </Button>
+              <Button
+                className="bg-emerald-500 hover:bg-emerald-600 text-white w-full"
+                onClick={() => {
+                  router.push("/property/add")
+                  setMobileMenuOpen(false)
+                }}
+              >
+                Add Property
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  )
+}
