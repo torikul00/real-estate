@@ -5,113 +5,113 @@ import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 type Testimonial = {
-  id: number
-  content: string
-  name: string
-  profession: string
-  image: string
+   id: number
+   content: string
+   name: string
+   profession: string
+   image: string
 }
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      content:
-        "Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos",
-      name: "Client Name",
-      profession: "Profession",
-      image: "/placeholder.svg?height=50&width=50",
-    },
-    {
-      id: 2,
-      content:
-        "Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos",
-      name: "Client Name",
-      profession: "Profession",
-      image: "/placeholder.svg?height=50&width=50",
-    },
-    {
-      id: 3,
-      content:
-        "Their service was exceptional! I found my dream home within weeks. The team was professional and understood exactly what I was looking for.",
-      name: "Sarah Johnson",
-      profession: "Teacher",
-      image: "/placeholder.svg?height=50&width=50",
-    },
-    {
-      id: 4,
-      content:
-        "As a first-time buyer, I was nervous about the process. Makaan made everything simple and stress-free. I couldn't be happier with my new apartment!",
-      name: "Michael Chen",
-      profession: "Software Engineer",
-      image: "/placeholder.svg?height=50&width=50",
-    },
-  ]
+   const testimonials: Testimonial[] = [
+      {
+         id: 1,
+         content:
+            "Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos",
+         name: "Client Name",
+         profession: "Profession",
+         image: "/images/testimonial-1.jpg",
+      },
+      {
+         id: 2,
+         content:
+            "Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos",
+         name: "Client Name",
+         profession: "Profession",
+         image: "/images/testimonial-2.jpg",
+      },
+      {
+         id: 3,
+         content:
+            "Their service was exceptional! I found my dream home within weeks. The team was professional and understood exactly what I was looking for.",
+         name: "Sarah Johnson",
+         profession: "Teacher",
+         image: "/images/testimonial-3.jpg",
+      },
+      {
+         id: 4,
+         content:
+            "As a first-time buyer, I was nervous about the process. Makaan made everything simple and stress-free. I couldn't be happier with my new apartment!",
+         name: "Michael Chen",
+         profession: "Software Engineer",
+         image: "/images/testimonial-4.jpg",
+      },
+   ]
 
-  const showPreviousTestimonial = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 2 : prevIndex - 1))
-  }
+   const showPreviousTestimonial = () => {
+      setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 2 : prevIndex - 1))
+   }
 
-  const showNextTestimonial = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 2 ? 0 : prevIndex + 1))
-  }
+   const showNextTestimonial = () => {
+      setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 2 ? 0 : prevIndex + 1))
+   }
 
-  return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-navy-800 mb-4">Our Clients Say!</h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit.
-            Ipsum diam justo sed rebum vero dolor duo.
-          </p>
-        </div>
+   return (
+      <section className="py-16 bg-white">
+         <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+               <h2 className="text-4xl font-bold text-navy-800 mb-4">Our Clients Say!</h2>
+               <p className="text-gray-600 max-w-3xl mx-auto">
+                  Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit.
+                  Ipsum diam justo sed rebum vero dolor duo.
+               </p>
+            </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          <button
-            onClick={showPreviousTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center z-10 hover:bg-emerald-600 transition-colors"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+            <div className="relative max-w-5xl mx-auto">
+               <button
+                  onClick={showPreviousTestimonial}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center z-10 hover:bg-emerald-600 transition-colors"
+                  aria-label="Previous testimonial"
+               >
+                  <ChevronLeft className="w-6 h-6" />
+               </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {testimonials.slice(currentIndex, currentIndex + 2).map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="border border-dashed border-emerald-200 bg-emerald-50/50 rounded-lg p-6"
-              >
-                <p className="text-gray-600 mb-6">{testimonial.content}</p>
-                <div className="flex items-center">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-                    <Image
-                      src={testimonial.image || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-navy-800">{testimonial.name}</h4>
-                    <p className="text-gray-500 text-sm">{testimonial.profession}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {testimonials.slice(currentIndex, currentIndex + 2).map((testimonial) => (
+                     <div
+                        key={testimonial.id}
+                        className="border border-dashed border-emerald-200 bg-emerald-50/50 rounded-lg p-6"
+                     >
+                        <p className="text-gray-600 mb-6">{testimonial.content}</p>
+                        <div className="flex items-center">
+                           <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
+                              <Image
+                                 src={testimonial.image || "/placeholder.svg"}
+                                 alt={testimonial.name}
+                                 fill
+                                 className="object-cover"
+                              />
+                           </div>
+                           <div>
+                              <h4 className="font-bold text-navy-800">{testimonial.name}</h4>
+                              <p className="text-gray-500 text-sm">{testimonial.profession}</p>
+                           </div>
+                        </div>
+                     </div>
+                  ))}
+               </div>
 
-          <button
-            onClick={showNextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center z-10 hover:bg-emerald-600 transition-colors"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-      </div>
-    </section>
-  )
+               <button
+                  onClick={showNextTestimonial}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center z-10 hover:bg-emerald-600 transition-colors"
+                  aria-label="Next testimonial"
+               >
+                  <ChevronRight className="w-6 h-6" />
+               </button>
+            </div>
+         </div>
+      </section>
+   )
 }

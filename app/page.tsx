@@ -9,17 +9,17 @@ import Testimonials from "@/components/testimonials"
 import Footer from "@/components/footer"
 
 export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <Navbar />
-      <HeroSection />
-      <SearchBar />
-      <PropertyTypes />
-      <PerfectProperty />
-      <PropertyListing />
-      <Testimonials />
-      <ContactAgent />
-      <Footer />
-    </main>
-  )
+   return (
+      <main className="min-h-screen">
+         <Navbar />
+         <HeroSection />
+         <SearchBar />
+         <PropertyTypes />
+         <PerfectProperty />
+         <PropertyListing />
+         <Testimonials />
+         <ContactAgent />
+         <Footer />
+      </main>
+   )
 }
