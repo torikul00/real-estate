@@ -8,8 +8,8 @@ import { Toaster } from "@/components/Toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-   title: "Makaan - Real Estate Platform",
-   description: "Find your perfect home with Makaan",
+   title: "PropFind - Real Estate Platform",
+   description: "Find your perfect home with PropFind",
 }
 
 export default function RootLayout({

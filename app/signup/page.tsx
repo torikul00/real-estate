@@ -60,10 +60,10 @@ export default function SignupPage() {
          <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <Link href="/" className="flex justify-center">
 
-               <span className="text-3xl font-bold text-emerald-500 ml-2">Makaan</span>
+               <span className="text-3xl font-bold text-emerald-500 ml-2">PropFind</span>
             </Link>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-navy-800">Create your account</h2>
-            <p className="mt-2 text-center text-sm text-gray-600">Join Makaan to find your perfect home</p>
+            <p className="mt-2 text-center text-sm text-gray-600">Join PropFind to find your perfect home</p>
          </div>
 
          <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

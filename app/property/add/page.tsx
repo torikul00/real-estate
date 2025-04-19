@@ -61,7 +61,7 @@ export default function AddPropertyPage() {
           <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl font-bold text-navy-800 mb-6">Add New Property</h1>
             <p className="text-gray-600 mb-8">
-              Fill out the form below to list your property on Makaan. All fields marked with * are required.
+              Fill out the form below to list your property on PropFind. All fields marked with * are required.
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

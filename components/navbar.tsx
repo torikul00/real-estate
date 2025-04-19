@@ -30,7 +30,7 @@ export default function Navbar() {
       <header className="bg-white shadow-sm">
          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link href="/" className="flex items-center gap-2">
-               <span className="text-3xl font-bold text-emerald-500">Makaan</span>
+               <span className="text-3xl font-bold text-emerald-500">PropFind</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">

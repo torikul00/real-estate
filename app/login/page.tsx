@@ -59,10 +59,10 @@ export default function LoginPage() {
       <div className="min-h-screen bg-emerald-50/50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
          <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <Link href="/" className="flex justify-center">
-               <span className="text-3xl font-bold text-emerald-500 ml-2">Makaan</span>
+               <span className="text-3xl font-bold text-emerald-500 ml-2">PropFind</span>
             </Link>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-navy-800">Sign in to your account</h2>
-            <p className="mt-2 text-center text-sm text-gray-600">Find your perfect home with Makaan</p>
+            <p className="mt-2 text-center text-sm text-gray-600">Find your perfect home with PropFind</p>
          </div>
 
          <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

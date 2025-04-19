@@ -43,7 +43,7 @@ export default function Testimonials() {
       {
          id: 4,
          content:
-            "As a first-time buyer, I was nervous about the process. Makaan made everything simple and stress-free. I couldn't be happier with my new apartment!",
+            "As a first-time buyer, I was nervous about the process. PropFind made everything simple and stress-free. I couldn't be happier with my new apartment!",
          name: "Michael Chen",
          profession: "Software Engineer",
          image: "/images/testimonial-4.jpg",
