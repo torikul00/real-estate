@@ -13,11 +13,18 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { Menu, X } from "lucide-react"
+import { Menu, X, LogOut, User } from "lucide-react"
+import { useAuth } from "@/lib/auth-context"
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
+  const { user, logout, isLoading } = useAuth()
+
+  const handleLogout = async () => {
+    await logout()
+    setMobileMenuOpen(false)
+  }
 
   return (
     <header className="bg-white shadow-sm">
@@ -87,19 +94,46 @@ export default function Navbar() {
           </NavigationMenu>
 
           <div className="flex items-center space-x-4">
-            <Button
-              variant="outline"
-              className="border-emerald-500 text-emerald-500 hover:bg-emerald-50"
-              onClick={() => router.push("/login")}
-            >
-              Login
-            </Button>
-            <Button
-              className="bg-emerald-500 hover:bg-emerald-600 text-white"
-              onClick={() => router.push("/property/add")}
-            >
-              Add Property
-            </Button>
+            {isLoading ? (
+              <div className="h-10 w-20 bg-gray-100 animate-pulse rounded"></div>
+            ) : user ? (
+              <>
+                <div className="flex items-center space-x-2">
+                  <User className="h-5 w-5 text-emerald-500" />
+                  <span className="font-medium text-gray-800">{user.name}</span>
+                </div>
+                <Button
+                  variant="outline"
+                  className="border-emerald-500 text-emerald-500 hover:bg-emerald-50"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </Button>
+                <Button
+                  className="bg-emerald-500 hover:bg-emerald-600 text-white"
+                  onClick={() => router.push("/property/add")}
+                >
+                  Add Property
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  variant="outline"
+                  className="border-emerald-500 text-emerald-500 hover:bg-emerald-50"
+                  onClick={() => router.push("/login")}
+                >
+                  Login
+                </Button>
+                <Button
+                  className="bg-emerald-500 hover:bg-emerald-600 text-white"
+                  onClick={() => router.push("/signup")}
+                >
+                  Sign Up
+                </Button>
+              </>
+            )}
           </div>
         </div>
 
@@ -148,25 +182,55 @@ export default function Navbar() {
               CONTACT
             </Link>
             <div className="pt-4 flex flex-col space-y-2">
-              <Button
-                variant="outline"
-                className="border-emerald-500 text-emerald-500 hover:bg-emerald-50 w-full"
-                onClick={() => {
-                  router.push("/login")
-                  setMobileMenuOpen(false)
-                }}
-              >
-                Login
-              </Button>
-              <Button
-                className="bg-emerald-500 hover:bg-emerald-600 text-white w-full"
-                onClick={() => {
-                  router.push("/property/add")
-                  setMobileMenuOpen(false)
-                }}
-              >
-                Add Property
-              </Button>
+              {isLoading ? (
+                <div className="h-10 w-full bg-gray-100 animate-pulse rounded"></div>
+              ) : user ? (
+                <>
+                  <div className="flex items-center space-x-2 py-2 px-3">
+                    <User className="h-5 w-5 text-emerald-500" />
+                    <span className="font-medium text-gray-800">{user.name}</span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    className="border-emerald-500 text-emerald-500 hover:bg-emerald-50 w-full"
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </Button>
+                  <Button
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white w-full"
+                    onClick={() => {
+                      router.push("/property/add")
+                      setMobileMenuOpen(false)
+                    }}
+                  >
+                    Add Property
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="outline"
+                    className="border-emerald-500 text-emerald-500 hover:bg-emerald-50 w-full"
+                    onClick={() => {
+                      router.push("/login")
+                      setMobileMenuOpen(false)
+                    }}
+                  >
+                    Login
+                  </Button>
+                  <Button
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white w-full"
+                    onClick={() => {
+                      router.push("/signup")
+                      setMobileMenuOpen(false)
+                    }}
+                  >
+                    Sign Up
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>
