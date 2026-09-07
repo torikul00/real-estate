@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Property from '@/models/Property';
+import { normalizeProperty } from '@/lib/normalizeProperty';
 
 export async function GET(request, { params }) {
    try {
@@ -11,7 +12,7 @@ export async function GET(request, { params }) {
       const { id } = params;
 
       // Find property by ID and populate owner information
-      const property = await Property.findById(id).populate('owner', 'name email phone');
+      const property = await Property.findById(id).populate('owner', 'name email phone').lean();
 
       // If property not found
       if (!property) {
@@ -21,7 +22,7 @@ export async function GET(request, { params }) {
          );
       }
 
-      return NextResponse.json({ property });
+      return NextResponse.json({ property: normalizeProperty(property) });
    } catch (error) {
       console.error('Error fetching property:', error);
       return NextResponse.json(

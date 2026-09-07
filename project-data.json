@@ -1,0 +1,69 @@
+{
+  "id": 4,
+  "order": 10,
+  "slug": "propfind-real-estate-platform",
+  "title": "PropFind - Real Estate Platform",
+  "category": "Real Estate",
+  "tag": "Full-Stack Project",
+  "short_description": "A full-stack real estate listing platform for browsing, filtering, and publishing property listings, with JWT-based authentication, Cloudinary image uploads, and route-level access control.",
+  "project_overview": [
+    "PropFind is a full-stack real estate web application that lets users browse property listings, view detailed property pages, and publish their own listings with image uploads. I built both the frontend and backend, including the database schema, authentication system, API routes, and all UI screens.",
+    "The application is built with Next.js 15 (App Router) and React 19, backed by MongoDB via Mongoose for data storage. Authentication uses JWT stored in httpOnly cookies, with password hashing via bcrypt and centralized route protection through Next.js middleware.",
+    "The UI is built with Tailwind CSS and a shadcn/ui (Radix UI) component library covering over 50 reusable components, giving the app a consistent, accessible, and fully responsive design across marketing pages, listing pages, forms, and dashboards."
+  ],
+  "key_features": [
+    "Property Listings: Homepage and listings page display properties fetched from the database, with property cards showing price, location, type, and key features (area, bedrooms, bathrooms).",
+    "Property Detail Pages: Dynamic property pages with an image gallery/carousel, tabbed content (Description, Details, Amenities), agent contact info, and a direct inquiry form.",
+    "Add Property Workflow: Multi-step property creation form with multi-image upload (via Cloudinary), amenity selection, and a live preview card that updates as the form is filled out.",
+    "Authentication System: Email/password signup and login with bcrypt password hashing, JWT issuance, and httpOnly auth cookies; includes session persistence via a `/api/auth/me` check and a global auth context used across the app.",
+    "Protected Routes: Centralized Next.js middleware verifies the JWT on every request and redirects unauthenticated users to the login page (with a return-to path), while keeping marketing pages public.",
+    "Image Upload Pipeline: Property images are uploaded as base64 payloads and stored in Cloudinary, with URLs and public IDs persisted on the property document.",
+    "Contact Agent Inquiries: Visitors can submit an inquiry from a property page; the API resolves the property owner and records the inquiry details.",
+    "Search & Filtering UI: Listings page supports filtering by status, property type, price range, bedroom/bathroom count, and \"featured\" flag, plus sorting by price, size, beds, and baths.",
+    "Paginated Property API: The property listing endpoint supports page/limit query params and returns total counts for pagination.",
+    "Responsive Design: Fully responsive layout with a mobile navigation menu, built entirely with Tailwind CSS and Radix UI primitives.",
+    "Toast Notifications: User feedback for form submissions, uploads, and errors handled via Sonner toasts."
+  ],
+  "key_responsibilities": [
+    "Application Architecture: Designed the Next.js App Router structure, API route layout, and data flow between the frontend, backend, and MongoDB.",
+    "Backend Development: Built REST API routes for authentication (signup, login, logout, session check) and property management (create, list with pagination, fetch by ID) using Next.js Route Handlers.",
+    "Database Design: Designed Mongoose schemas for Property (title, description, price, location, property type, status, features, images, owner reference) and User (name, email, hashed password).",
+    "Authentication & Security: Implemented JWT-based authentication with bcrypt password hashing, httpOnly cookies, and a `jose`-based middleware layer that guards protected routes.",
+    "Media Handling: Integrated Cloudinary for property image uploads and built the multi-image upload UI with client-side previews.",
+    "Frontend Development: Built all pages (home, listings, property details, add property, login, signup) and shared components (navbar, footer, hero, search bar, testimonials) using React 19 and Tailwind CSS.",
+    "Component Library Integration: Assembled a shared UI kit from Radix UI primitives (dialogs, tabs, sliders, selects, dropdowns, etc.) styled with Tailwind for consistent design across the app.",
+    "State & Auth Context: Built a React context for authentication state so login/logout status and user info are available throughout the component tree.",
+    "Forms & Validation: Implemented controlled forms for login, signup, property creation, and contact inquiries, with client-side feedback and error handling."
+  ],
+  "technologies": [
+    "Next.js 15",
+    "React 19",
+    "TypeScript",
+    "MongoDB",
+    "Mongoose",
+    "Tailwind CSS",
+    "Radix UI / shadcn",
+    "JWT (jose & jsonwebtoken)",
+    "bcryptjs",
+    "Cloudinary",
+    "Sonner"
+  ],
+  "live_links": [],
+  "code_links": [
+    {
+      "label": "Live link",
+      "url": "https://propfind.torikulislam.com"
+    }
+  ],
+  "thumbnail": "https://cdn.torikulislam.com/projects/thumbnail/real.png",
+  "cover": "https://cdn.torikulislam.com/projects/thumbnail/real.png",
+  "seo": {
+    "title": "PropFind - Real Estate Platform | Torikul Islam",
+    "description": "A full-stack real estate listing platform built with Next.js, React, and MongoDB, featuring JWT authentication, Cloudinary image uploads, property search/filtering, and protected routes."
+  },
+  "project_gallary": [],
+  "credentials": {
+    "email": "",
+    "password": ""
+  }
+}

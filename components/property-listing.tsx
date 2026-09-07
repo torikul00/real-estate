@@ -11,8 +11,13 @@ type Property = {
    _id: string
    title: string
    price: number
-   address: string
-   type: string
+   location: {
+      address: string
+      city: string
+      state: string
+      zipCode: string
+   }
+   propertyType: string
    status: "for-sale" | "for-rent"
    images: { url: string }[]
    features: {
@@ -126,12 +131,12 @@ export default function PropertyListing() {
                               </div>
                               <div className="absolute bottom-4 left-4 z-10">
                                  <span className="px-3 py-1 text-sm font-medium text-emerald-500 bg-white rounded-md">
-                                    {property.type}
+                                    {property.propertyType}
                                  </span>
                               </div>
                               <div className="relative h-64 w-full">
                                  <Image
-                                    src={property.images && property.images.length > 0 ? property.images[0].url : "/placeholder.svg"}
+                                    src={property.images?.[0]?.url || "/placeholder.svg"}
                                     alt={property.title}
                                     fill
                                     className="object-cover"
@@ -145,20 +150,20 @@ export default function PropertyListing() {
                               <h3 className="text-xl font-bold text-navy-800 mb-2">{property.title}</h3>
                               <div className="flex items-center text-gray-500 mb-4">
                                  <MapPin className="w-4 h-4 mr-1 text-emerald-500" />
-                                 <span className="text-sm">{property.address}</span>
+                                 <span className="text-sm">{property.location?.address}</span>
                               </div>
                               <div className="grid grid-cols-3 border-t border-gray-200 pt-4">
                                  <div className="flex items-center justify-center">
                                     <Ruler className="w-4 h-4 mr-1 text-emerald-500" />
-                                    <span className="text-sm">{property.features.area} Sqft</span>
+                                    <span className="text-sm">{property.features?.area} Sqft</span>
                                  </div>
                                  <div className="flex items-center justify-center">
                                     <Bed className="w-4 h-4 mr-1 text-emerald-500" />
-                                    <span className="text-sm">{property.features.bedrooms} Bed</span>
+                                    <span className="text-sm">{property.features?.bedrooms} Bed</span>
                                  </div>
                                  <div className="flex items-center justify-center">
                                     <Bath className="w-4 h-4 mr-1 text-emerald-500" />
-                                    <span className="text-sm">{property.features.bathrooms} Bath</span>
+                                    <span className="text-sm">{property.features?.bathrooms} Bath</span>
                                  </div>
                               </div>
                            </div>

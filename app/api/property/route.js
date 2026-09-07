@@ -3,6 +3,7 @@ import dbConnect from '@/lib/mongodb';
 import Property from '@/models/Property';
 import { uploadToCloudinary } from '@/lib/cloudinary';
 import { getCurrentUser } from '@/lib/auth';
+import { normalizeProperty } from '@/lib/normalizeProperty';
 
 export async function POST(request) {
    try {
@@ -93,12 +94,13 @@ export async function GET(request) {
          .sort({ createdAt: -1 })
          .skip(skip)
          .limit(limit)
-         .populate('owner', 'name email');
+         .populate('owner', 'name email')
+         .lean();
 
       const total = await Property.countDocuments();
 
       return NextResponse.json({
-         properties,
+         properties: properties.map(normalizeProperty),
          pagination: {
             total,
             page,
